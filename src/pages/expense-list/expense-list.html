@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Expenses</ion-title>
+  </ion-navbar>
+  <ion-searchbar
+    [showCancelButton]="true"
+    (ionInput)="onSearchInput($event)"
+    (ionCancel)="onSearchCancel($event)"
+    (ionClear)="onSearchCancel($event)"
+    [(ngModel)]="serachInput">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="bubbles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list [virtualScroll]="filterList" approxItemHeight="40px">
+    <ion-item *virtualItem="let item" (click)="itemSelected(item)">
+      <h2>Id: {{item.ExpenseNumber}}</h2>
+      <h3>Status: {{item.Status}}</h3>
+      <h3>Remarks: {{item.Remarks}}</h3>
+    </ion-item> 
+  </ion-list>  
+</ion-content>

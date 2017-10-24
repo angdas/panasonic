@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button block>Action</button>
+  <ion-card>
+    <ion-card-header>
+      <h2>Id: {{expense.ExpenseNumber}}</h2>
+      <h3>Status: {{expense.Status}}</h3>
+      <h3>Remarks: {{expense.Remarks}}</h3>
+    </ion-card-header>
+  
+    <ion-list>
+      <ion-item *ngFor="let item of expense.ExpenseLine">
+        <h2>Type: {{item.ExpenseType}}</h2>
+        <h3>Amount: {{item.Amount}}</h3>
+        <h3>From: {{item.FromDate | date}}</h3>
+        <h3>To: {{item.ToDate | date}}</h3>
+      </ion-item> 
+    </ion-list>
+  </ion-card>
+</ion-content>
